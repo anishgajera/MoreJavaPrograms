@@ -1,0 +1,149 @@
+import java.util.*;
+
+public class LL
+{
+    private Node head;
+    private Node tail;
+    int size = 0;
+    
+    // add a node with an integer to the front of the list
+    public void addFront(int d)
+    {
+        //if list is empty
+        if(head == null)
+        {
+            //create a new head node with value d, no next node
+            head = new Node(d, null);
+            //the tail is equal to head bc only one node in list at this point
+            tail = head;
+        }
+        else
+        {
+            //else, add a new head node and make it point to the original head (i.e. it becomes the first node in the list)
+            head = new Node(d, head);
+        }
+        size++;
+    }
+    
+    //add a node with an integer to the back of the list
+    public void addBack(int d)
+    {
+        //same as above (if list doesn't exist, then ...)
+        if(head == null)
+        {
+            head = new Node(d, null);
+            tail = head;
+        }
+        else
+        {
+            tail.next = new Node(d, null);
+            tail = tail.next;
+        }
+        size++;
+    }
+    
+    //remove a node from the front of the list
+    public int removeFront()
+    {
+        int olddata = 0;
+        if(head == null) //empty list
+        {
+            throw new NoSuchElementException();
+        }
+        
+        if(head == tail) //one node only
+        {
+            olddata = head.data;
+            head = tail = null;
+            
+        }
+        else            //more than one node
+        {
+            olddata = head.data;
+            head = head.next;
+        }
+        size--;
+        return olddata;
+    }
+    
+    //remove a node from the end of the list
+    public int removeBack()
+    {
+        int olddata = 0;
+        if(head == null) //empty list
+        {
+            throw new NoSuchElementException();
+        }
+        if(head == tail) //one node only
+        {
+            olddata = head.data;
+            head = tail = null;
+        }
+        else            //more than one node
+        {
+            Node p = head;
+            while(p.next != tail)
+            {
+                p = p.next;
+            }
+            
+            olddata = tail.data;
+            tail = p;
+            tail.next = null;
+        }
+        size--;
+        return olddata;
+    }
+    
+    //toString method 
+    public String toString()
+    {
+        StringBuilder sb = new StringBuilder("[ ");
+        
+        Node p = head;
+        while (p != null)
+        {
+            sb.append(p.data + " ");
+            p = p.next;
+        }
+        sb.append("]");
+        
+        return new String(sb);
+    }
+    
+    
+    private static class Node
+    {
+        Node(int d, Node n)
+        {
+            data = d;
+            next = n;
+        }
+        
+        int data;
+        Node next;
+    }
+    
+    public static void main(String [] args)
+    {
+        LL list = new LL();
+        
+        list.addFront(-1);
+        list.addBack(0);
+        list.addBack(1);
+        list.addBack(2);
+        list.addBack(3);
+        System.out.println(list);
+        
+        int f = list.removeFront();
+        int b = list.removeBack();
+        
+        System.out.println(list);
+        
+    }
+    
+    
+    
+    
+    
+}
