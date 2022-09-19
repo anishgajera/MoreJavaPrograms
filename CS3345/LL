@@ -121,7 +121,7 @@ public class LL
         tail = temp;
     }
     
-/*    //get the node data at index i
+    //get the node data at index i
     public int get(int i)
     {
         if(i < 0 || i > size - 1) //out of bounds
@@ -130,10 +130,14 @@ public class LL
         }
         
         Node p = head;
-        for(int k = 0; k < )
-        
+        int data = 0;
+        for(int x = 0; x < i; x++)
+        {
+            p = p.next;
+        }
+        data = p.data;
+        return data;
     }
-*/
     
     
     //toString method 
@@ -188,10 +192,9 @@ public class LL
         System.out.println(list);
         list.reverse();
         System.out.println(list);
+        
+        System.out.println("Index 0 = " + list.get(0));
+        System.out.println("Index 3 = " + list.get(3));
+        System.out.println("Index 9 = " + list.get(9));
     }
-    
-    
-    
-    
-    
 }
