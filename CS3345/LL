@@ -95,6 +95,47 @@ public class LL
         return olddata;
     }
     
+    //reverse the list
+    public void reverse()
+    {
+        if(head == null || head == tail) //0 or 1 nodes only
+        {
+            return;
+        }
+        
+        Node p1 = null;
+        Node p2 = head;
+        Node p3 = head.next;
+        
+        while(p3 != null)
+        {
+            p2.next = p1;
+            p1 = p2;
+            p2 = p3;
+            p3 = p3.next;
+        }
+        p2.next = p1;
+        
+        Node temp = head;
+        head = tail;
+        tail = temp;
+    }
+    
+/*    //get the node data at index i
+    public int get(int i)
+    {
+        if(i < 0 || i > size - 1) //out of bounds
+        {
+            throw new ArrayIndexOutOfBoundsException("Index " + i + ";");
+        }
+        
+        Node p = head;
+        for(int k = 0; k < )
+        
+    }
+*/
+    
+    
     //toString method 
     public String toString()
     {
@@ -140,6 +181,13 @@ public class LL
         
         System.out.println(list);
         
+        for(int i = 0; i < 10; i++)
+        {
+            list.addBack(i);
+        }
+        System.out.println(list);
+        list.reverse();
+        System.out.println(list);
     }
     
     
