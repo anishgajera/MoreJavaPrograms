@@ -1,2 +1,2 @@
 # MoreJavaPrograms
-This repository contains various Java programs which were worked on and completed, ready for use.
+This repository contains various Java programs I have worked on and completed, ready for use.
